@@ -27,12 +27,12 @@ flagConfigPath := flag.String("config", "your edited config yml path", "Load con
 go https://github.com/quay/clair/blob/v2.1.6/cmd/clair/main.go
 ```
 
-##Windows 
+## Windows 
 ```markdown
 Add postgres bin path into Environment Variable For Windows 
 ```
 
-##MAC-OSX
+## MAC-OSX
 ```markdown
 For latest Version of postgres 
 brew install postgres
