@@ -98,8 +98,10 @@ python manage.py migrate —fake-initial
 ## Creating Super user for Accessing Admin panel
 
 ```markdown
-python manage.py createsuperuser enter username :
-enter email: optional enter password : 
+python manage.py createsuperuser 
+enter username :
+enter email: 
+optional enter password : 
 ```
 
 ## For running Django  Project
