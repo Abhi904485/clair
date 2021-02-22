@@ -86,15 +86,23 @@ WSGI_APPLICATION = 'clair.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'clair',
+        'NAME': 'clair1',
         'USER': 'akumars1',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'clair.sqlite')
     }
+
 }
+
+DATABASE_ROUTERS = ['clair.DatabaseRouter.DatabaseRouter']
+DATABASE_APPS_MAPPING = {'customer_data': 'postgres'}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
