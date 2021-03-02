@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class SchemaMigrations(models.Model):
-    version = models.IntegerField(primary_key=True)
+    version = models.IntegerField(verbose_name="Version", primary_key=True)
 
     class Meta:
         managed = True

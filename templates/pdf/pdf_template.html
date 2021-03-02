@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Test</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1 style="text-align: center">{{ meta }}</h1>
+    <table style="width:100%">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            {% for hcolumn in hcolumns %}
+                <th scope="col">{{ hcolumn }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                {% with row as colums %}
+                    {% for column in colums %}
+                        <td>{{ column }}</td>
+                    {% endfor %}
+                {% endwith %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
