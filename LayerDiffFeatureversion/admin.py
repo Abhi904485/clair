@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django_admin_search.admin import AdvancedSearchAdmin
 
+from clair.export import ExportCsvMixin, ExportPdfMixin
+from .forms import LayerDiffFeatureVersionForm
 from .models import LayerDiffFeatureversion
 
 
@@ -8,7 +11,7 @@ from .models import LayerDiffFeatureversion
 
 
 @admin.register(LayerDiffFeatureversion)
-class LayerDiffFeatureversionAdmin(admin.ModelAdmin):
+class LayerDiffFeatureversionAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPdfMixin):
 
     def layer_link(self):
         return format_html(
@@ -28,10 +31,12 @@ class LayerDiffFeatureversionAdmin(admin.ModelAdmin):
     featureversion_link.short_description = "Feature Version"
     featureversion_link.admin_order_field = "featureversion"
 
-    list_display = (layer_link, featureversion_link, 'modification')
-    readonly_fields = ('layer', 'featureversion')
-    search_fields = ('layer__name', 'featureversion__version', 'modification')
-    ordering = ('modification',)
+    list_display = ("id", layer_link, featureversion_link, 'modification')
+    raw_id_fields = ('layer', 'featureversion')
+    search_fields = ("id", 'layer__name', 'featureversion__version', 'modification')
+    ordering = ("id", 'modification',)
     list_per_page = 20
     list_filter = ('modification', 'layer__namespace', 'featureversion',)
-    list_display_links = (layer_link, featureversion_link, 'modification')
+    list_display_links = ("id", layer_link, featureversion_link, 'modification')
+    actions = ["export_as_csv", "export_as_pdf"]
+    search_form = LayerDiffFeatureVersionForm

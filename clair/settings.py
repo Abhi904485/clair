@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_admin_search',
     'VulnerabilityNotification',
     'VulnerabilityAffectsFeatureversion',
     'VulnerabilityFixedinFeature',
@@ -66,6 +67,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'pdf')
         ]
         ,
         'APP_DIRS': True,
