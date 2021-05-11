@@ -88,15 +88,15 @@ WSGI_APPLICATION = 'clair.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'postgres': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'clair1',
-        'USER': 'akumars1',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'somethingnotencrypted',
+        'HOST': 'qat-cvs-dbinstance.ce3rs78jmmht.us-west-2.rds.amazonaws.com',
+        'PORT': '3306',
+    },
+    'default1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'clair.sqlite')
     }

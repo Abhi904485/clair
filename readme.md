@@ -128,7 +128,10 @@ optional enter password :
 ## For running Django  Project
 
 ```markdown
-python3 manage.py runserver 
+screen is used for running command as background
+1.screen  press enter key
+
+2. python3 manage.py runserver 0.0.0.0:8000 & press enter
 ```
 
 ## Tunnel Forwarding (replace username with your mac username)
@@ -182,3 +185,22 @@ self.pk_attname = self.lookup_opts.pk.attname
 ## Site packages Directory
 
 python3 -m site
+
+## Scp for more Customization
+
+```
+scp -r -i cs_team_shncasb.pem /Users/akumars1/Downloads/pem/django_admin_search ubuntu@172.18.68.234:/home/ubuntu/.local/lib/python3.8/site-packages/
+or 
+sudo cp /home/ubuntu/clair/customize.py /home/ubuntu/.local/lib/python3.8/site-packages/django/contrib/admin/views/main.py
+
+scp -r -i cs_team_shncasb.pem /Users/akumars1/Downloads/pem/django_admin_search/ ubuntu@172.18.68.234:/home/ubuntu/.local/lib/python3.8/site-packages/django_admin_search
+
+sudo cp -r  /home/ubuntu/clair/custom/ /home/ubuntu/.local/lib/python3.8/site-packages/django_admin_search/
+```
+
+## Host
+```
+1. qat-cvs-dbinstance.ce3rs78jmmht.us-west-2.rds.amazonaws.com
+2. qaautoregression-cvs-dbinstance.ce3rs78jmmht.us-west-2.rds.amazonaws.com
+
+```
