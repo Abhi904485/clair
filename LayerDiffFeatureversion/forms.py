@@ -4,7 +4,7 @@ from .models import LayerDiffFeatureversion
 
 
 class LayerDiffFeatureVersionForm(forms.Form):
-    id = IntegerField(label="Search By ID", required=False, widget=TextInput(
+    id = IntegerField(label="Search By LDFV ID", required=False, widget=TextInput(
         attrs={
             'filter_field': 'id',
             'filter_method': '__exact',

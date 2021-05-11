@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.utils.html import format_html
 from django_admin_search.admin import AdvancedSearchAdmin
 
 from clair.export import ExportCsvMixin, ExportPdfMixin
+from clair.utility import get_link
 from .forms import LayerDiffFeatureVersionForm
 from .models import LayerDiffFeatureversion
 
@@ -14,19 +14,15 @@ from .models import LayerDiffFeatureversion
 class LayerDiffFeatureversionAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPdfMixin):
 
     def layer_link(self):
-        return format_html(
-            '<a href="/{app_name}/{db_table}/{db_table_primary_key}/change/">{db_table_field}</a>'.format(
-                app_name=self.layer._meta.app_label, db_table=self.layer._meta.db_table,
-                db_table_primary_key=self.layer.id, db_table_field=self.layer.name))
+        tables = ['layer', ]
+        return get_link(self, 'name', tables)
 
     layer_link.short_description = "Layer"
     layer_link.admin_order_field = "layer"
 
     def featureversion_link(self):
-        return format_html(
-            '<a href="/{app_name}/{db_table}/{db_table_primary_key}/change/">{db_table_field}</a>'.format(
-                app_name=self.featureversion._meta.app_label, db_table=self.featureversion._meta.db_table,
-                db_table_primary_key=self.featureversion.id, db_table_field=self.featureversion.version))
+        tables = ['featureversion', ]
+        return get_link(self, 'version', tables)
 
     featureversion_link.short_description = "Feature Version"
     featureversion_link.admin_order_field = "featureversion"

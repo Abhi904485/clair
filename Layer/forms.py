@@ -70,43 +70,44 @@ class LayerSearchForm(forms.Form):
     #
     # select_box = ChoiceField(choices=CHOICES, widget=Select())
 
-    created_layer_between_date_time = DateTimeField(label="Search In Date Range", required=False, widget=TextInput(
+    created_layer_between_date = DateTimeField(label="Search In Date Range", required=False, widget=TextInput(
         attrs={
             'filter_field': 'created_at',
             'filter_method': '__range',
-            'placeholder': 'yyyy-mm-dd hh:mm:ss yyyy-mm-dd hh:mm:ss',
+            'placeholder': 'yyyy-mm-dd yyyy-mm-dd',
         }
 
     ))
 
-    created_on_or_before_date_time = DateTimeField(label="Search By Layer Created before date", required=False,
+    created_before_date = DateTimeField(label="Search By Layer Created before date", required=False,
                                                    widget=TextInput(
                                                        attrs={
                                                            'filter_field': 'created_at',
-                                                           'filter_method': '__lte',
-                                                           'placeholder': 'yyyy-mm-dd hh:mm:ss'
+                                                      'filter_method': '__lt',
+                                                      'placeholder': 'yyyy-mm-dd',
                                                        }
                                                    ))
-    created_on_after_date_time = DateTimeField(label="Search By Layer Created after date", required=False,
+    created_after_date = DateTimeField(label="Search By Layer Created after date", required=False,
                                                widget=TextInput(
                                                    attrs={
                                                        'filter_field': 'created_at',
-                                                       'filter_method': '__gte',
-                                                       'placeholder': 'yyyy-mm-dd hh:mm:ss'
+                                                  'filter_method': '__gt',
+                                                  'placeholder': 'yyyy-mm-dd',
                                                    }
                                                ))
-    created_on_exact_date_time = DateTimeField(label="Search by Exact Date Time", required=False, widget=TextInput(
+    created_on_exact_date = DateTimeField(label="Search by Layer created on Exact Date", required=False, widget=TextInput(
         attrs={
             'filter_field': 'created_at',
             'filter_method': '__date',
-            'placeholder': 'yyyy-mm-dd hh:mm:ss'
+            'placeholder': 'yyyy-mm-dd hh:mm:ss',
         }
     ))
-    created_on_day_month_year_and_or = DateTimeField(label="Search by Day Month Year", required=False, widget=TextInput(
+    created_on_year_month_day_hour_minute_second_and_or = DateTimeField(
+        label="Search by Day Month Year hour minute second", required=False, widget=TextInput(
         attrs={
             'filter_field': 'created_at',
-            'filter_method': '__year __month __day',
-            'placeholder': 'yyyy-mm-dd Any Combination of y m d',
+                'filter_method': '',
+                'placeholder': 'yyyy-mm-dd hh:mm:ss  or Any Combination of year ,month, date,  hour, minute, second',
         }
     ))
 

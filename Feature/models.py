@@ -60,9 +60,7 @@ class Feature(models.Model):
 
     def get_vulnerability_link(self):
         from Vulnerability.models import Vulnerability
-        vulnerability = Vulnerability.objects.filter(namespace__name=self.namespace.name).values_list('name',
-                                                                                                      flat=True).order_by(
-            'name')
+        vulnerability = Vulnerability.objects.filter(namespace__name=self.namespace.name).values_list('name', flat=True).order_by('name')
         options = ""
         for vul in vulnerability:
             options += '{}\t'.format(vul)
