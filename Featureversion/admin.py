@@ -31,8 +31,7 @@ class FeatureversionAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPdfMixin):
     search_fields = ("id", "feature__name", "version", "id")
     ordering = ("version", "id")
     list_per_page = 20
-    list_filter = (('version', custom_titled_filter("Feature Version")),
-                   ('feature__namespace__name', custom_titled_filter("Namespace")))
+    list_filter = (('feature__namespace__name', custom_titled_filter("Namespace")),)
     list_display_links = (feature_link, "version", "id", namespace_link)
     actions = ["export_as_csv", "export_as_pdf"]
     search_form = FeatureVersionSearchForm

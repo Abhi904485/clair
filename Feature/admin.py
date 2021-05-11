@@ -26,7 +26,7 @@ class FeatureAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPdfMixin):
 
     version_format_link.short_description = "Namespace Version Format"
     version_format_link.admin_order_field = "namespace__version_format"
-    list_display = ("id", "name", namespace_link, version_format_link, 'get_vulnerability_fixedin_feature_version', 'get_vulnerability_link')
+    list_display = ("id", "name", namespace_link, version_format_link)
     raw_id_fields = ("namespace",)
     search_fields = ("id", 'name', 'namespace__name', 'namespace__version_format', 'vulnerabilityfixedinfeature__version', 'vulnerabilityfixedinfeature__vulnerability__name')
     ordering = ('name', "id")

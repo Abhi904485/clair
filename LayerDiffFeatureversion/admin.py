@@ -32,7 +32,7 @@ class LayerDiffFeatureversionAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPd
     search_fields = ("id", 'layer__name', 'featureversion__version', 'modification')
     ordering = ("id", 'modification',)
     list_per_page = 20
-    list_filter = ('modification', 'layer__namespace', 'featureversion',)
+    list_filter = ('modification', 'layer__namespace',)
     list_display_links = ("id", layer_link, featureversion_link, 'modification')
     actions = ["export_as_csv", "export_as_pdf"]
     search_form = LayerDiffFeatureVersionForm
