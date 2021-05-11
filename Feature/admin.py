@@ -30,7 +30,7 @@ class FeatureAdmin(AdvancedSearchAdmin, ExportCsvMixin, ExportPdfMixin):
     raw_id_fields = ("namespace",)
     search_fields = ("id", 'name', 'namespace__name', 'namespace__version_format', 'vulnerabilityfixedinfeature__version', 'vulnerabilityfixedinfeature__vulnerability__name')
     ordering = ('name', "id")
-    list_per_page = 5
+    list_per_page = 20
     list_filter = ('namespace__version_format', 'namespace__name',)
     list_display_links = ("name", namespace_link, version_format_link, "id")
     actions = ["export_as_csv", "export_as_pdf"]
