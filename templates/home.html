@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Admin Panel</h5>
+                    <p class="card-text">Clair UI Integration with CVE DATABASE</p>
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary">Admin Panel</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Scan Image</h5>
+                    <p class="card-text">Scan Image through klar</p>
+                    <a href="{% url 'klar:scan_image' %}" class="btn btn-primary">Klar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

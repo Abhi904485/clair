@@ -1,0 +1,36 @@
+<div class="jumbotron m-lg-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nlb">CLAIR NLB HOST</label>
+            <input type="text" class="form-control" id="nlb" aria-describedby="nlbHelp" placeholder="Enter CLAIR NLB" name="nlb_host">
+            <small id="nlbHelp" class="form-text text-muted">Enter CLAIR NLB HOST</small>
+        </div>
+        <div class="form-group">
+            <label for="port">Clair Port</label>
+            <input type="number" class="form-control" id="port" placeholder="Enter port" name="clair_port">
+            <small id="portHelp" class="form-text text-muted">Enter clair port</small>
+        </div>
+        <div class="form-group">
+            <label for="username">Docker Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter Docker Username" name="username">
+            <small id="usernameHelp" class="form-text text-muted">Enter Docker Username</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Docker password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Docker password" name="password">
+            <small id="passwordHelp" class="form-text text-muted">Enter Docker Password</small>
+        </div>
+        <div class="form-group">
+            <label for="klar_binary_path">Klar Binary Path</label>
+            <input type="file" class="form-control-file" id="klar_binary_path" placeholder="Enter Klar Binary Path" name="klar_binary_path">
+            <small id="klar_binary_path_Help" class="form-text text-muted">Enter klar binary path</small>
+        </div>
+        <div class="form-group">
+            <label for="docker_image">Docker Image</label>
+            <input type="text" class="form-control" id="docker_image" placeholder="Enter Klar Binary Path" name="docker_image">
+            <small id="docker_image_Help" class="form-text text-muted">Enter Docker Image</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
