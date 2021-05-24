@@ -2,7 +2,6 @@ import json
 import subprocess
 import os
 from django.contrib import messages
-from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -21,14 +20,7 @@ def scan_image(request):
         nlb_port = request.POST['clair_port']
         docker_username = request.POST['username']
         docker_password = request.POST['password']
-        # set_docker_username_password()
-        # docker_username = os.environ.get('DOCKER_USER')
-        # docker_password = os.environ.get('DOCKER_PASSWORD')
-        klar_uploaded_file = request.FILES['klar_binary_path']
-        fs = FileSystemStorage()
-        filename = fs.save(klar_uploaded_file.name, klar_uploaded_file)
-        binary_save_location = os.path.join(fs.location, filename)
-        os.system("chmod +x {}".format(binary_save_location))
+        binary_save_location = request.POST['klar_binary_path']
         docker_image = request.POST['docker_image']
         command = '''CLAIR_ADDR=http://postgres@{}:{} JSON_OUTPUT=1 DOCKER_USER={} DOCKER_PASSWORD={} {} {}'''.format(nlb_host, nlb_port, docker_username, docker_password, binary_save_location, docker_image)
         messages.info(request, 'image {} scanning is in progress via klar binary path {} do not refresh page'.format(docker_image, binary_save_location))
