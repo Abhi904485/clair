@@ -46,7 +46,7 @@ def get_final_table(model, tables):
 
 def build_navigable_link(app_name, db_table, db_table_primary_key, db_table_column_value):
     return format_html(
-        '<a href="/{app_name}/{db_table}/{db_table_primary_key}/change/">{db_table_column_value}</a>'.format(
+        '<a href="/admin/{app_name}/{db_table}/{db_table_primary_key}/change/">{db_table_column_value}</a>'.format(
             app_name=app_name, db_table=db_table,
             db_table_primary_key=db_table_primary_key, db_table_column_value=db_table_column_value))
 
