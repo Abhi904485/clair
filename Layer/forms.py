@@ -40,7 +40,7 @@ class LayerSearchForm(forms.Form):
         attrs={
             'filter_field': 'parent__name',
             'filter_method': '__isnull',
-            'placeholder': "True or False",
+            'placeholder': "True or False (Case Does not Matter)",
         }
     ))
 
@@ -74,7 +74,7 @@ class LayerSearchForm(forms.Form):
         attrs={
             'filter_field': 'created_at',
             'filter_method': '__range',
-            'placeholder': 'yyyy-mm-dd yyyy-mm-dd',
+            'placeholder': 'yyyy[y]-mm[mo]-dd[d] yyyy[y]-mm[mo]-dd[d]',
         }
 
     ))
@@ -84,7 +84,7 @@ class LayerSearchForm(forms.Form):
                                                        attrs={
                                                            'filter_field': 'created_at',
                                                       'filter_method': '__lt',
-                                                      'placeholder': 'yyyy-mm-dd',
+                                                      'placeholder': 'yyyy[y]-mm[mo]-dd[d]',
                                                        }
                                                    ))
     created_after_date = DateTimeField(label="Search By Layer Created after date", required=False,
@@ -92,14 +92,14 @@ class LayerSearchForm(forms.Form):
                                                    attrs={
                                                        'filter_field': 'created_at',
                                                   'filter_method': '__gt',
-                                                  'placeholder': 'yyyy-mm-dd',
+                                                  'placeholder': 'yyyy[y]-mm[mo]-dd[d]',
                                                    }
                                                ))
     created_on_exact_date = DateTimeField(label="Search by Layer created on Exact Date", required=False, widget=TextInput(
         attrs={
             'filter_field': 'created_at',
             'filter_method': '__date',
-            'placeholder': 'yyyy-mm-dd hh:mm:ss',
+            'placeholder': 'yyyy[y]-mm[mo]-dd[d] hh[h]:mm[m]:ss[s]',
         }
     ))
     created_on_year_month_day_hour_minute_second_and_or = DateTimeField(
@@ -107,7 +107,7 @@ class LayerSearchForm(forms.Form):
         attrs={
             'filter_field': 'created_at',
                 'filter_method': '',
-                'placeholder': 'yyyy-mm-dd hh:mm:ss  or Any Combination of year ,month, date,  hour, minute, second',
+                'placeholder': 'yyyy[y]-mm[mo]-dd[d] hh[h]:mm[m]:ss[s]  or yyyy[y] ,mm[mo], dd[d],  hh[h], mm[m], ss[s]',
         }
     ))
 

@@ -116,7 +116,7 @@ def before_exact_after(field, field_value, form_field, request, advanced_search_
             start_date, _ = get_date_time(sd[0])
             return Q(**{get_field_name_and_field_filter(form_field, field): start_date})
         except ValidationError:
-            messages.add_message(request, messages.ERROR, 'Date time should be in yyyy-mm-dd')
+            messages.add_message(request, messages.ERROR, 'Date time should be in yyyy[y]-mm[mo]-dd[d]')
             return None
     else:
         return Q()
@@ -129,7 +129,7 @@ def between_date_range(field, field_value, form_field, request, advanced_search_
             start_date, end_date = get_date_time(sd, ed)
             return Q(**{get_field_name_and_field_filter(form_field, field): [start_date, end_date]})
         except ValidationError:
-            messages.add_message(request, messages.ERROR, 'Both Date should be in yyyy-mm-dd with space separated ')
+            messages.add_message(request, messages.ERROR, 'Both Date should be in yyyy[y]-mm[mo]-dd[d] with space separated ')
             return None
     else:
         return Q()
@@ -142,8 +142,7 @@ def generate_query_for_date(field, field_value, form_field, request, advanced_se
         elif split_field_value(field_value)[1] == 2:
             return between_date_range(field, field_value, form_field, request, advanced_search_fields)
         else:
-            messages.add_message(request, messages.ERROR,
-                                 'Entered Date should be in yyyy-mm-dd or yyyy-mm-dd yyyy-mm-dd with space separated ')
+            messages.add_message(request, messages.ERROR,'Entered Date should be in yyyy[y]-mm[mo]-dd[d]')
             return None
     else:
         return Q()

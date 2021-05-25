@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sqlparse
 from django.contrib import messages
 from django.contrib.admin import ModelAdmin
 from django.core.exceptions import ValidationError
@@ -21,9 +22,11 @@ class AdvancedSearchAdmin(ModelAdmin):
         """
             override django admin 'get_queryset'
         """
+        query = None
         queryset = super().get_queryset(request)
         try:
-            result_queryset = queryset.filter(self.advanced_search_query(request))
+            query = self.advanced_search_query(request)
+            result_queryset = queryset.filter(query)
             if not result_queryset.exists():
                 if not getattr(messages.get_messages(request), '_queued_messages', False):
                     messages.add_message(request, messages.INFO, 'No match Found', extra_tags='cvs')
@@ -33,12 +36,17 @@ class AdvancedSearchAdmin(ModelAdmin):
                 return queryset
             else:
                 return result_queryset
-        except Exception:
+        except Exception as e:
             if not getattr(messages.get_messages(request), '_queued_messages', False):
-                messages.add_message(request, messages.ERROR, 'Filter not applied, error has occurred', extra_tags='cvs error')
+                messages.add_message(request, messages.ERROR, 'falling back to select * from {}'.format(queryset.model._meta.app_label), extra_tags='cvs error')
+                if query:
+                    messages.add_message(request, messages.ERROR, '{} where {}'.format(queryset.query, query), extra_tags='cvs error')
+                for err in e.args:
+                    messages.add_message(request, messages.ERROR, '{} input is not properly formatted'.format(err), extra_tags='cvs error')
+                    messages.add_message(request, messages.ERROR, 'input is not properly formatted as expected', extra_tags='cvs error')
             else:
                 pass
-            return queryset.none()
+            return queryset
 
     # def populate_search_form_from_url(self, request):
     #     populate_dict = {}
