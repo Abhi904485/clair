@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
+from django.conf.locale.en import formats as en_formats
 
+# Date format according to timezone
+en_formats.DATETIME_FORMAT = "d b Y H:i:s"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     'Featureversion',
     'Feature',
     'klar',
+    'rangefilter'
 ]
 
 MIDDLEWARE = [
@@ -139,7 +143,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
