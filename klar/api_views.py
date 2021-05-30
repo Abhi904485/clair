@@ -24,7 +24,7 @@ def scan_image_klar(request):
         response, error = child.communicate()
         value = {}
         try:
-            value = json.dumps(json.loads(response), sort_keys=True, indent=4, ensure_ascii=False)
+            value = json.loads(response)
         except ObjectDoesNotExist:
             pass
         finally:
