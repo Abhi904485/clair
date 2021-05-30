@@ -4,3 +4,6 @@ django-admin-search==0.3.6
 django-debug-toolbar==2.2
 WeasyPrint==52.2
 django-admin-rangefilter==0.8.1
+djangorestframework==3.11.1
+pytz==2020.1
+sqlparse==0.3.1

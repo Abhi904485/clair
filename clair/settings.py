@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'Featureversion',
     'Feature',
     'klar',
-    'rangefilter'
+    'rangefilter',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

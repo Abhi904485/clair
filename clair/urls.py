@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', home, name='home'),
     path('klar/', include('klar.urls', namespace='klar')),
+    path('klar_api/', include('klar.api_urls', namespace='klar_api')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
 
