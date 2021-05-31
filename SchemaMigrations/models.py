@@ -9,6 +9,7 @@ class SchemaMigrations(models.Model):
     class Meta:
         managed = True
         db_table = 'schema_migrations'
+        verbose_name_plural = 'schema_migrations'
 
     def __str__(self):
         return str(self.version)
