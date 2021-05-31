@@ -1,2 +1,4 @@
 /.idea
 fixtures.json
+!**/__pycache__/
+*.pyc
