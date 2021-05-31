@@ -29,6 +29,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('klar/', include('klar.urls', namespace='klar')),
     path('klar_api/', include('klar.api_urls', namespace='klar_api')),
+    path('raw_query/',include('raw_query.urls',namespace='raw_query')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
 

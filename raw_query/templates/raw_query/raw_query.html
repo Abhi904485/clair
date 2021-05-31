@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <style>
+        .table td.fit,
+        .table th.fit {
+            white-space: nowrap;
+            width: 1%;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="raw_query" class="text-center"><h2>Enter Raw Query</h2></label>
+            <textarea class="form-control" id="raw_query" rows="3" name="raw_query">{{ query }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+    <div class="table-responsive mt-3">
+        <table id="raw_table" class="table table-hover table-sm table-light">
+            <thead>
+            <tr>
+                {% for column in columns %}
+                    <th scope="col" class=" text-center fit">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in rows %}
+                <tr>
+                    {% with value as values %}
+                        {% for value in values %}
+                            <td class="text-center fit">{{ value }}</td>
+                        {% endfor %}
+                    {% endwith %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('#raw_query').val("{{ query }}")
+    </script>
+{% endblock %}

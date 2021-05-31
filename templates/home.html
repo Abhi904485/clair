@@ -4,7 +4,7 @@
     <div class="row mt-5">
         <div class="col">
             <div class="card">
-                <a href="{% url 'admin:index' %}"><img src="{%static 'img/cve.png'  %}" class="card-img-top" alt="..."></a>
+                <a href="{% url 'admin:index' %}"><img src="{% static 'img/cve.png' %}" height="245px" class="card-img-top" alt="..."></a>
                 <div class="card-body">
                     <h5 class="card-title">Admin Panel</h5>
                     <p class="card-text">Django Integration with CVE DATABASE</p>
@@ -14,11 +14,24 @@
         </div>
         <div class="col">
             <div class="card">
-                <a href="{% url 'klar:scan_image' %}"><img src="{% static 'img/clair.png' %}" height="245px" class="card-img-top" alt="..."></a>
+                <a href="{% url 'klar:scan_image' %}"><img src="{% static 'img/clair.png' %}" height="245px"
+                                                           class="card-img-top" alt="..."></a>
                 <div class="card-body">
                     <h5 class="card-title">Scan Image</h5>
                     <p class="card-text">Scan Image through klar</p>
                     <a href="{% url 'klar:scan_image' %}" class="btn btn-primary">Klar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+    <div class="col-12">
+            <div class="card">
+                <a href="{% url 'raw_query:raw_query' %}"><img src="{% static 'img/django_raw.jpg' %}" height="400px" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                    <h5 class="card-title">Raw queries</h5>
+                    <p class="card-text">Raw Custom Queries</p>
+                    <a href="{% url 'raw_query:raw_query' %}" class="btn btn-primary">Raw queries</a>
                 </div>
             </div>
         </div>

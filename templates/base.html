@@ -5,7 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block style %}
 
+    {% endblock %}
     <!-- Bootstrap CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
@@ -36,8 +38,16 @@
     {% block content %}
     {% endblock %}
 </div>
+{% block full_content %}
+
+{% endblock %}
 <script src="{% static 'jquery/jquery-3.6.0.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+    $('.alert-success').delay(2000).fadeOut(500);
+</script>
+{% block javascript %}
+{% endblock %}
 </body>
 </html>
